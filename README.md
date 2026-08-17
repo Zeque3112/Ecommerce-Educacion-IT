@@ -123,4 +123,4 @@ const API_BASE_URL = 'https://tu-id.mockapi.io/api'
 - Comentarios: mínimo 10 caracteres
 
 ## Autor
-Ezequiel Spagnoli
+Ezequiel Spagnoli De Conti
