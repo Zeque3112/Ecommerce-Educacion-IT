@@ -28,8 +28,15 @@ export const useProducts = () => {
     try {
       setLoading(true)
       setError(null)
-      const newProduct = await createProduct(productData)
-      setProducts([...products, newProduct])
+
+      const normalizedProduct = {
+        ...productData,
+        precio: Number(productData.precio),
+        stock: Number(productData.stock),
+      }
+
+      const newProduct = await createProduct(normalizedProduct)
+      setProducts((prevProducts) => [...prevProducts, newProduct])
       return newProduct
     } catch (err) {
       setError(err.message)

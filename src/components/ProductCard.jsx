@@ -34,8 +34,10 @@ function ProductCard({ product }) {
           <p className="product-description">{product.descripcionCorta}</p>
 
           <div className="product-footer">
-            <span className="product-price">${product.precio.toFixed(2)}</span>
-            {product.stock > 0 ? (
+            <span className="product-price">
+              ${Number(product.precio || 0).toFixed(2)}
+            </span>
+            {Number(product.stock || 0) > 0 ? (
               <span className="product-stock">Stock: {product.stock}</span>
             ) : (
               <span className="product-stock-empty">Sin stock</span>
