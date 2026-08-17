@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useCart } from '../hooks/useCart'
 import { createOrder } from '../utils/api'
 import Toast from './Toast'
@@ -20,6 +21,7 @@ function CartModal() {
   const [showToast, setShowToast] = useState(false)
   const [toastMessage, setToastMessage] = useState('')
   const [toastType, setToastType] = useState('success')
+  const navigate = useNavigate()
 
   // Cerrar modal con ESC
   useEffect(() => {
@@ -38,6 +40,11 @@ function CartModal() {
     if (e.target === e.currentTarget) {
       setIsCartModalOpen(false)
     }
+  }
+
+  const handleGoToCartPage = () => {
+    setIsCartModalOpen(false)
+    navigate('/carrito')
   }
 
   const handleSubmitOrder = async () => {
@@ -155,6 +162,13 @@ function CartModal() {
                   disabled={isLoading}
                 >
                   Vaciar Carrito
+                </button>
+                <button
+                  className="btn-submit"
+                  onClick={handleGoToCartPage}
+                  disabled={isLoading}
+                >
+                  Ver carrito
                 </button>
                 <button
                   className="btn-submit"
